@@ -4,36 +4,29 @@ import {px} from '../shared/px';
 import {baseEchartOptions} from '../shared/base-echart-options';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 
-export const Chart1 = () => {
+export const Chart2 = () => {
   const divRef = useRef(null);
 
   useEffect(() => {
     const myChart = echarts.init(divRef.current);
     myChart.setOption(createEchartsOptions({
       ...baseEchartOptions,
-      xAxis: {
-        data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
-        axisTick: {show: false},
-        axisLabel: {
-          fontSize: px(12),
-          formatter(val) {
-            if (val.length > 2) {
-              const array = val.split('');
-              array.splice(2, 0, '\n');
-              return array.join('');
-            }
-            return val;
-          }
-        },
+      grid: {
+        x: px(100),
+        y: px(40),
+        x2: px(40),
+        y2: px(40)
       },
-      yAxis: {
-        splitLine: {show: false},
-        axisLine: {
-          lineStyle: {color: '#083'}
-        },
+      xAxis: {
         axisLabel: {
           fontSize: px(12)
-        }
+        },
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: ['北京', '北京', '北京', '北京', '北京', '北京']
       },
       series: [{
         type: 'bar',
@@ -44,7 +37,7 @@ export const Chart1 = () => {
 
   return (
     <div className="bordered 管辖统计">
-      <h2>案发派出所管辖统计</h2>
+      <h2>案件破获排名</h2>
       <div ref={divRef} className="chart"></div>
     </div>
   );
