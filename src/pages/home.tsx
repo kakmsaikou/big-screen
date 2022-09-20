@@ -11,6 +11,7 @@ const px = (n) => {
 };
 
 export const Home = () => {
+  const year = new Date().getFullYear()
 
   return (
     <div className="home">
@@ -26,6 +27,9 @@ export const Home = () => {
         <section className="bordered section4"></section>
         <section className="bordered section5"></section>
       </main>
+      <footer>
+        &copy; TacitusPie 2020-{year}
+      </footer>
     </div>
   );
 };
